@@ -3,7 +3,10 @@ import { Col, Container, Row, Card, Button } from "react-bootstrap";
 import { Navigate, NavLink, Outlet, useNavigate } from "react-router-dom"
 import UserContext from "../../context/UserContext"
 import { isLoggedIn } from "../../auth/HelperAuth"
+import useJwtTokenExpiration from "../../hooks/useJwtTokenExpiration";
 const Dashboard = () => {
+
+    useJwtTokenExpiration()
 
     const userContext = useContext(UserContext);
 

@@ -10,6 +10,7 @@ const Home = () => {
             {JSON.stringify(userContext)}
             <h1>user is logged in  - {userContext.isLogin + ''}</h1>
             <h1>Welcome {userContext.userData?.user?.gender}</h1>
+            
 
         </div>
     )

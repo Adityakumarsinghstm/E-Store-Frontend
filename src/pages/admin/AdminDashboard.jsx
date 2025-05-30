@@ -4,8 +4,10 @@ import { Navigate, Outlet } from "react-router-dom"
 import { isAdminUser } from "../../auth/HelperAuth"
 import UserContext from "../../context/UserContext"
 import SideMenu from "../../components/admin/SideMenu"
+import useJwtTokenExpiration from "../../hooks/useJwtTokenExpiration"
 const AdminDashboard = () => {
 
+    useJwtTokenExpiration()
     const userContext = useContext(UserContext)
     const dashboardView = () => {
         return (
@@ -28,7 +30,7 @@ const AdminDashboard = () => {
     }
 
     return (
-        (isAdminUser()) ? dashboardView() : <Navigate to="/users/home" />
+        (isAdminUser()) ? dashboardView() : <Navigate to="/" />
     )
 }
 

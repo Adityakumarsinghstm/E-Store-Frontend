@@ -1,9 +1,10 @@
 import Base from "../components/Base";
+import AboutPage from "./AboutPage";
 
 function About() {
   return (
     <Base title="Electro Store / About Us" description={null}>
-      <div>This is About page</div>
+      <AboutPage />
     </Base>
   );
 }

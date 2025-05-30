@@ -1,4 +1,6 @@
 import Base from "../components/Base";
+import Feature from "./Features";
+
 
 function Services() {
   return (
@@ -10,7 +12,7 @@ function Services() {
       buttonType="warning"
       buttonText="Home"
     >
-      <div>This is Services page</div>
+      <Feature></Feature>
     </Base>
   );
 }

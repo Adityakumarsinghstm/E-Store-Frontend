@@ -32,41 +32,15 @@ import Loading from "./components/Loading";
 import { useEffect, useState } from "react";
 import { privateAxios } from "./services/axios.service";
 import Swal from "sweetalert2";
+import useLoader from "./hooks/useLoader";
+import Deal from "./pages/Deal";
+import TermCon from "./pages/TermCon";
+import Faq from "./pages/Faq";
+import Return from "./pages/Return";
+import OrderTrack from "./pages/TrackOrder";
+import ChatBot from "./pages/ChatBot";
 function App() {
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    //request interceptor
-    privateAxios.interceptors.request.use(
-      (config) => {
-        setLoading(true);
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-
-    //repsonse interceptor
-    privateAxios.interceptors.response.use(
-      (config) => {
-        setLoading(false);
-        return config;
-      },
-      (error) => {
-        setLoading(false);
-        if (error.code === "ERR_NETWORK") {
-          // toast.error("Backend Server is down ! Try Again");
-          Swal.fire({
-            title: "Network Error",
-            html: "Backend server is down",
-            icon: "info",
-          });
-        }
-        return Promise.reject(error);
-      }
-    );
-  }, []);
+  const loading = useLoader();
 
   return (
     // setting up routes
@@ -86,6 +60,12 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/store" element={<StorePage />} />
+            <Route path="/deals" element={<Deal />} />
+            <Route path="/termcon" element={<TermCon />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/chatBot" element={<ChatBot />} />
+            <Route path="/return" element={<Return />} />
+            <Route path="/order-track" element={<OrderTrack/>}/>
             <Route path="store/products/:productId" element={<ProductView />} />
             <Route
               path="store/:categoryId/:categoryTitle"

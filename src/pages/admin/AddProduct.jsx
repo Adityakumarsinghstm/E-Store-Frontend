@@ -231,7 +231,7 @@ const AddProduct = () => {
 
                                 <Editor
 
-                                    apiKey=""
+                                    apiKey="v5i3hzvcaiyjbtcdkssukyl12l9r28iroiz4kdmj55bvsucz"
                                     onInit={(evt, editor) => editorRef.current = editor}
                                     init={{
                                         height: 380,

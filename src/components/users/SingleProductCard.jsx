@@ -4,10 +4,22 @@ import { getProductImageUrl } from '../../services/helper.service'
 import "../users/SingleProductCard.css"
 import defaultProductImage from '../../assets/default_product_image.jpg'
 import { Link } from 'react-router-dom'
+import ShowHtml from '../ShowHtml'
+
+const truncateText = (html, wordLimit) => {
+    const text = html.replace(/<[^>]+>/g, ''); // Remove HTML tags
+    const words = text.split(/\s+/).slice(0, wordLimit);
+    return words.join(' ') + (words.length >= wordLimit ? '...' : '');
+};
+const truncateWords = (text, wordLimit) => {
+    const words = text.split(/\s+/).slice(0, wordLimit);
+    return words.join(' ') + (words.length >= wordLimit ? '...' : '');
+};
+
 const SingleProductCard = ({ product }) => {
     return (
 
-        <Card className='m-1 shadow-sm'>
+        <Card className='m-1 shadow-sm border-0 rounded-4'>
 
             <Card.Body>
                 <Container className='text-center'>
@@ -19,8 +31,12 @@ const SingleProductCard = ({ product }) => {
                         }}
                         alt="" />
                 </Container>
-                <h6>{product.title}</h6>
-                <p className='text-muted'>Sort description <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, velit?</span> </p>
+                <h6>{truncateWords(product.title, 10)}</h6>
+
+                <p className='text-muted'>
+                    Short description <ShowHtml htmlText={truncateText(product.description, 30)} />
+                </p>
+
                 <Badge pill bg='info'>{product.category?.title}</Badge>
                 <Badge className='ms-2' pill bg={product.stock ? 'success' : 'danger'}>{product.stock ? 'In Stock' : " Out of Stock"}</Badge>
                 <Container className='text-end'>

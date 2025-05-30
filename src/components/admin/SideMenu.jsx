@@ -65,7 +65,7 @@ const SideMenu = () => {
                 </Badge>
 
             </ListGroup.Item>
-            <ListGroup.Item as={NavLink} to="/users/home" action>
+            <ListGroup.Item as={NavLink} to="/admin/home" action>
                 <MdDashboard size={20} />
                 <span className="ms-2">
                     Dashboard
